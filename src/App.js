@@ -1,6 +1,7 @@
 import './App.css';
 import {createFFmpeg,fetchFile} from '@ffmpeg/ffmpeg';
 import { useEffect,useState } from 'react';
+import '../node_modules/bulma/css/bulma.min.css'
 const ffmpeg = createFFmpeg({log:true});
 function App() {
   const [ready, setReady] = useState(false);
@@ -28,9 +29,9 @@ function App() {
                 src={URL.createObjectURL(video)}   
                 ></video>}
 
-    <input type="file" onChange={(e)=>setVideo(e.target.files?.item(0))}/>
-    <button onClick={convertToGif}>Convert</button>
-    { gif && <img src={gif}/> }
+    <input  className="button is-info" type="file" onChange={(e)=>setVideo(e.target.files?.item(0))}/>
+    <button onClick={convertToGif} className="button is-danger">Convert</button>
+    { gif && <img src={gif} alt="converted gif"/> }
     </div>
   ):
   (<p>Loading...</p>)
